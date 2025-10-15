@@ -15,13 +15,5 @@ class ProductController extends Controller
         $product = Product::create($userRequest);
         return new ProductResource($product);
     }
-    public function index(){
 
-    }
-    public function show(){
-
-    }
-    public function destroy(){
-
-    }
 }
