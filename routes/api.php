@@ -21,8 +21,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/home', [HomeController::class,'index']);
-// Route::get('/users',[UserController::class,'index']);
 
-Route::post('/products',[ProductController::class,'store']);
+// Route::post('/products',[ProductController::class,'store']);
+// Route::get('/products',[ProductController::class,'index']);
+
+Route::group(['prefix'=> '/product'],function(){
+    Route::post('',[ProductController::class,'store']);
+    Route::get('',[ProductController::class,'index']);
+});
 
 

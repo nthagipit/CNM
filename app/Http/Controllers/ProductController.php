@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Product\CreateRequest;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -14,6 +15,11 @@ class ProductController extends Controller
         $userRequest= $request->validated();
         $product = Product::create($userRequest);
         return new ProductResource($product);
+    }
+    public function index(Request $request)
+    {
+        $products = Product::orderBY('id','desc');
+        return ProductResource::apiPaginate($products,$request);
     }
 
 }
